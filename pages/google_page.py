@@ -2,12 +2,14 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 from browser import Browser
+from selenium.webdriver.common.keys import Keys
+
 
 
 class GooglePageLocator(object):
     # Seletores dos elementos utilizados na página
     INPUT_PESQUISA = '[name="q"]'
-    BUTTON_PESQUISAR = '.FPdoLc [name="btnK"]'
+    BUTTON_PESQUISAR = 'gNO89b'
     TITLE_RESULTADO = '[data-attrid="title"]'
 
 
@@ -29,8 +31,9 @@ class GooglePage(Browser):
 
     def click_button_pesquisar(self):
         # clica no botão de pesquisar
-        button = self.get_element(GooglePageLocator.BUTTON_PESQUISAR)
-        button.click()
+        input_pesquisaEnter = self.get_element(GooglePageLocator.INPUT_PESQUISA)
+        input_pesquisaEnter.send_keys(Keys.ENTER);
+
 
     def get_text_title_resultado(self):
         # retorna o texto do elemento
